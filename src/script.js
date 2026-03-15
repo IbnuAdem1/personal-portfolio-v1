@@ -62,3 +62,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const roles = ["A Frontend Developer", "A UI Designer", " A Problem Solver"];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typeTarget = document.getElementById('typewriter');
+
+function typeEffect() {
+  const currentRole = roles[roleIndex];
+  
+  // Add or remove letters
+  if (isDeleting) {
+    typeTarget.textContent = currentRole.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typeTarget.textContent = currentRole.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  // How fast to type or delete
+  let typeSpeed = isDeleting ? 40 : 100;
+
+  // Pause or switch words
+  if (!isDeleting && charIndex === currentRole.length) {
+    typeSpeed = 2000; // Wait at the end
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    typeSpeed = 500; // Small pause before next word
+  }
+
+  setTimeout(typeEffect, typeSpeed);
+}
+
+// Start typing after 1 second
+setTimeout(typeEffect, 1000);
