@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
-@theme{
+@theme {
   --font-sans: 'Outfit', sans-serif;
 }
+
+// 3D
+
+.perspective-1500 {
+  perspective: 1500px !important;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d !important;
+  will-change: transform;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.backface-hidden {
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  transform: translateZ(0); 
+}
+
+.group:hover .group-hover-flip {
+  transform: rotateY(180deg) !important;
+}
+

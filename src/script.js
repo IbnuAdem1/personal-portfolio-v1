@@ -99,3 +99,4 @@ function typeEffect() {
 
 // Start typing after 1 second
 setTimeout(typeEffect, 1000);
+
