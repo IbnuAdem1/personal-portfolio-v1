@@ -252,3 +252,58 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+  const form = document.getElementById('contact-form');
+  const container = document.getElementById('form-container');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Change button text to "Sending..."
+    const btn = form.querySelector('button');
+    const btnText = btn.querySelector('span');
+    btnText.innerHTML = 'Negotiating...';
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      if (response.status == 200) {
+        // Success Animation
+        container.style.opacity = '0';
+        setTimeout(() => {
+          container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-700">
+              <div class="w-24 h-24 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-full flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(37,99,235,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4">Message Received</h2>
+              <p class="text-slate-500 font-medium max-w-xs leading-relaxed">
+                Your vision has been transmitted. I'll review the details and get back to you shortly.
+              </p>
+              <button onclick="window.location.reload()" class="mt-10 text-xs font-bold uppercase tracking-widest text-blue-600 hover:text-blue-800 transition-colors">
+                ← Send another
+              </button>
+            </div>
+          `;
+          container.style.opacity = '1';
+        }, 500);
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      btnText.innerHTML = "Something went wrong";
+    });
+  });
+
+
