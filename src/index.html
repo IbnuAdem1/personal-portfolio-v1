@@ -208,11 +208,11 @@
 
           <div class="relative group cursor-pointer w-full h-[550px] perspective-1500">
 
-<div id="card-inner" class="relative w-full h-full transform-style-3d group-hover-flip">
+            <div id="card-inner" class="relative w-full h-full transform-style-3d group-hover-flip">
 
-            <div
-  class="absolute -inset-2 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-</div>
+              <div
+                class="absolute -inset-2 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              </div>
 
               <div
                 class="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0b1023] to-[#0a0f2a] border border-[#1f2a44] rounded-2xl overflow-hidden shadow-2xl">
@@ -295,36 +295,33 @@
 
                   <p class="pl-6">},</p>
 
-                  <p>};<span class="animate-pulse">|</span></p></p>
+                  <p>};<span class="animate-pulse">|</span></p>
+                  </p>
 
                 </div>
                 <!-- Terminal Input -->
-<div id="terminal-box" class="absolute bottom-0 left-0 w-full border-t border-[#1f2a44] bg-[#0f1430] p-4">
+                <div id="terminal-box"
+                  class="absolute bottom-0 left-0 w-full border-t border-[#1f2a44] bg-[#0f1430] p-4">
 
-  <p class="text-[10px] text-gray-500 font-mono mb-1">
-    try: show / open / hello
-  </p>
+                  <p class="text-[10px] text-gray-400 font-b mb-1">
+                    try: show / open / hello
+                  </p>
 
-  <div class="flex items-center gap-2">
-    <span class="text-green-400 font-mono">$</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-400 font-mono">$</span>
 
-    <input
-      id="terminal-input"
-      type="text"
-      placeholder='type "show" and press enter...'
-      class="flex-1 bg-transparent outline-none text-sm text-gray-200 placeholder-gray-500 font-mono"
-    />
+                    <input id="terminal-input" type="text" placeholder='type "show" and press enter...'
+                      class="flex-1 bg-transparent outline-none text-sm text-gray-200 placeholder-gray-500 font-mono" />
 
-    <button
-      id="run-btn"
-      class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-white transition">
-      Run
-    </button>
-  </div>
+                    <button id="run-btn"
+                      class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-white transition">
+                      Run
+                    </button>
+                  </div>
 
-</div>
+                </div>
               </div>
-              
+
               <div
                 class="absolute inset-0 w-full h-full bg-white border border-gray-100 rounded-2xl overflow-hidden p-3 backface-hidden shadow-2xl"
                 style="transform: rotateY(180deg);">
@@ -343,12 +340,12 @@
                   </div>
                 </div>
               </div>
-              
+
 
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -521,12 +518,208 @@
     </div>
   </section>
 
+  <section id="projects" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <h3
+            class="text-4xl md:text-5xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">
+            Featured Work
+          </h3>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
+          <button
+            class="filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-gradient-to-r from-blue-600 to-cyan-400 text-white shadow-md shadow-blue-500/20"
+            data-filter="all">
+            All
+          </button>
+          <button
+            class="filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-blue-600 hover:bg-white hover:shadow-sm"
+            data-filter="fullstack">
+            Full Stack
+          </button>
+          <button
+            class=" filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-blue-600 hover:bg-white hover:shadow-sm"
+            data-filter="ui">
+            UI/UX
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div
+          class=" project-card group relative bg-slate-50 rounded-[2.5rem] p-4 border border-slate-100 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 md:col-span-2 lg:col-span-2 flex flex-col lg:flex-row gap-6"
+          data-category="fullstack">
+
+          <div class="relative overflow-hidden rounded-[2rem] h-72 lg:h-auto lg:w-1/2">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
+              alt="Car Spare Parts Dashboard"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-multiply">
+            </div>
+
+            <div
+              class="absolute top-4 left-4 backdrop-blur-md bg-white/90 border border-white/20 px-4 py-1.5 rounded-full shadow-lg">
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 text-xs font-black uppercase tracking-widest">
+                ★ Featured
+              </span>
+            </div>
+          </div>
+
+          <div class="px-2 pb-4 lg:py-6 lg:pr-6 lg:w-1/2 flex flex-col justify-center">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 rounded-full bg-blue-100/50 text-blue-700 text-[10px] font-bold uppercase tracking-wider border border-blue-200/50">MERN
+                Stack</span>
+            </div>
+
+            <h4 class="text-3xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">AutoParts
+              Management System</h4>
+            <p class="text-slate-500 text-base leading-relaxed mb-8 font-light">
+              A comprehensive web-based dashboard for remote business monitoring. Features include real-time stock
+              management, sales tracking, and detailed employee activity logs designed for high-volume local merchants.
+            </p>
+
+            <div class="flex items-center gap-4 mt-auto">
+              <a href="#"
+                class="p-3.5 rounded-full bg-white text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all group/btn"
+                title="View Source">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="group-hover/btn:scale-110 transition-transform">
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+              </a>
+              <a href="#"
+                class="flex-1 py-3.5 px-6 rounded-2xl bg-slate-900 text-white text-center text-sm font-bold uppercase tracking-widest hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-400 transition-all shadow-lg hover:shadow-blue-500/25">
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class=" project-card group relative bg-slate-50 rounded-[2.5rem] p-4 border border-slate-100 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col"
+          data-category="fullstack">
+          <div class="relative overflow-hidden rounded-[2rem] h-60 mb-6">
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=800"
+              alt="E-learning Platform"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+          </div>
+
+          <div class="px-2 pb-2 flex-1 flex flex-col">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 rounded-full bg-blue-100/50 text-blue-700 text-[10px] font-bold uppercase tracking-wider border border-blue-200/50">Full
+                Stack</span>
+              <span
+                class="px-3 py-1 rounded-full bg-cyan-100/50 text-cyan-700 text-[10px] font-bold uppercase tracking-wider border border-cyan-200/50">MongoDB</span>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">LearnHub</h4>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">
+              A web-based learning platform offering courses, progress tracking, quizzes, and instructor dashboards with
+              structured content delivery.
+            </p>
+
+            <div class="flex items-center gap-4 mt-auto">
+              <a href="#"
+                class="p-3 rounded-full bg-white text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all group/btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="group-hover/btn:scale-110 transition-transform">
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+              </a>
+              <a href="#"
+                class="flex-1 py-3 px-6 rounded-2xl bg-white border border-slate-200 text-slate-800 text-center text-xs font-bold uppercase tracking-widest hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm">
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class=" project-card group relative bg-slate-50 rounded-[2.5rem] p-4 border border-slate-100 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 flex flex-col lg:col-span-3 xl:col-span-1"
+          data-category="fullstack">
+          <div class="relative overflow-hidden rounded-[2rem] h-60 mb-6">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+              alt="E-Commerce Platform"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+          </div>
+
+          <div class="px-2 pb-2 flex-1 flex flex-col">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 rounded-full bg-blue-100/50 text-blue-700 text-[10px] font-bold uppercase tracking-wider border border-blue-200/50">React</span>
+              <span
+                class="px-3 py-1 rounded-full bg-cyan-100/50 text-cyan-700 text-[10px] font-bold uppercase tracking-wider border border-cyan-200/50">Tailwind</span>
+            </div>
+
+            <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">E-Commerce
+              SaaS</h4>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">
+              A high-performance storefront with real-time inventory tracking, multi-language support, and dynamic
+              checkout flows.
+            </p>
+
+            <div class="flex items-center gap-4 mt-auto">
+              <a href="#"
+                class="p-3 rounded-full bg-white text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all group/btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="group-hover/btn:scale-110 transition-transform">
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+              </a>
+              <a href="#"
+                class="flex-1 py-3 px-6 rounded-2xl bg-white border border-slate-200 text-slate-800 text-center text-xs font-bold uppercase tracking-widest hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm">
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-16 text-center">
+        <a href="#"
+          class="inline-flex items-center gap-2 text-slate-600 font-bold text-sm uppercase tracking-wider hover:text-blue-600 transition-colors group">
+          View Full Archive
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
 
   <script src="./script.js"></script>
 </body>
+
 </html>
-  
-  <script src="./script.js"></script>
+
+<script src="./script.js"></script>
 </body>
 
 </html>

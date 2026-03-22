@@ -140,17 +140,84 @@ input.addEventListener("keydown", (e) => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.skill-card');
-  const bars = document.querySelectorAll('.progress-bar');
 
-  // animate visible progress bars
-  const runAnimations = () => {
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  function setupFilter(sectionId, cardClass, options = {}) {
+    const section = document.querySelector(sectionId);
+    if (!section) return;
+
+    const buttons = section.querySelectorAll('.filter-btn');
+    const cards = section.querySelectorAll(cardClass);
+
+    const runExtra = options.onFilter || (() => {});
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+
+        // reset buttons
+        buttons.forEach(b => {
+          b.classList.remove(
+            'bg-gradient-to-r',
+            'from-blue-600',
+            'to-cyan-400',
+            'text-white'
+          );
+          b.classList.add('text-slate-500');
+        });
+
+        // activate button
+        btn.classList.add(
+          'bg-gradient-to-r',
+          'from-blue-600',
+          'to-cyan-400',
+          'text-white'
+        );
+        btn.classList.remove('text-slate-500');
+
+        const category = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+
+          if (category === 'all' || cardCat.includes(category)) {
+
+            card.classList.remove('hidden');
+
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 10);
+
+          } else {
+
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+              card.classList.add('hidden');
+            }, 300);
+          }
+        });
+
+        runExtra(); // for skills
+      });
+    });
+  }
+
+
+  //  SKILLS SETUP
+  
+
+  const skillsSection = document.querySelector('#skills');
+  const bars = skillsSection.querySelectorAll('.progress-bar');
+
+  const runSkillAnimations = () => {
     bars.forEach(bar => {
       const card = bar.closest('.skill-card');
 
-      if (card.style.display !== 'none') {
+      if (!card.classList.contains('hidden')) {
         const targetWidth = bar.getAttribute('data-target');
 
         bar.style.transition = 'none';
@@ -164,68 +231,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // trigger once when #skills enters view
+  // intersection observer for skills
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      runAnimations();
+      runSkillAnimations();
       observer.disconnect();
     }
   }, { threshold: 0.1 });
 
-  observer.observe(document.querySelector('#skills'));
+  observer.observe(skillsSection);
 
-  // filter buttons
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+  // INIT BOTH SECTIONS
 
-      // reset buttons
-      filterBtns.forEach(b => {
-        b.classList.remove(
-          'bg-gradient-to-r',
-          'from-blue-600',
-          'to-cyan-400',
-          'text-white',
-          'shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]'
-        );
-        b.classList.add('text-slate-500');
-        b.classList.remove('active');
-      });
-
-      // activate current button
-      btn.classList.add(
-        'bg-gradient-to-r',
-        'from-blue-600',
-        'to-cyan-400',
-        'text-white',
-        'shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]'
-      );
-      btn.classList.remove('text-slate-500');
-      btn.classList.add('active');
-
-      const category = btn.getAttribute('data-filter');
-
-      // filter cards
-      cards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-
-        if (category === 'all' || cardCat === category) {
-          card.style.display = 'block';
-
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(10px)';
-
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
-        }
-      });
-
-      runAnimations();
-    });
+  setupFilter('#skills', '.skill-card', {
+    onFilter: runSkillAnimations
   });
+
+  setupFilter('#projects', '.project-card');
+
 });
+
+
