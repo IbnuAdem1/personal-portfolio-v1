@@ -23,7 +23,9 @@
         <!-- Name-->
         <div class="shrink-0">
           <a href="#home" class="text-2xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors">
-            Ahmed<span class="text-blue-600">Adem</span>
+            Ahmed<span class="
+           bg-gradient-to-r from-blue-600 to-cyan-400 
+           bg-clip-text text-transparent">Adem</span>
           </a>
         </div>
 
@@ -204,16 +206,16 @@
 
         <div class="flex-1 w-full max-w-lg lg:max-w-none">
 
-          <div class="relative group cursor-pointer w-full h-[450px] perspective-1500">
+          <div class="relative group cursor-pointer w-full h-[550px] perspective-1500">
 
-            <div class="relative w-full h-full transform-style-3d group-hover-flip">
+<div id="card-inner" class="relative w-full h-full transform-style-3d group-hover-flip">
+
+            <div
+  class="absolute -inset-2 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+</div>
 
               <div
-                class="absolute -inset-2 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-              </div>
-
-              <div
-                class="absolute inset-0 w-full h-[500px] bg-gradient-to-br from-[#0b1023] to-[#0a0f2a] border border-[#1f2a44] rounded-2xl overflow-hidden shadow-2xl">
+                class="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0b1023] to-[#0a0f2a] border border-[#1f2a44] rounded-2xl overflow-hidden shadow-2xl">
 
                 <!-- Top bar -->
                 <div class="bg-[#0f1430] px-4 py-3 flex items-center gap-2 border-b border-[#1f2a44]">
@@ -224,7 +226,7 @@
                 </div>
 
                 <!-- Code area -->
-                <div class="p-9 font-mono font-semibold text-[15px] leading-relaxed text-gray-200 ">
+                <div class="p-8 font-mono font-semibold text-[13px] md:text-[14px] leading-6 text-gray-300 ">
 
                   <p>
                     <span class="text-pink-500">const</span>
@@ -286,20 +288,45 @@
                   </p>
 
                   <p class="pl-16">
-                    this.skills.length <span class="text-cyan-400">>=</span> 5
+                    this.Traits.length <span class="text-cyan-400">>=</span> 5
                   </p>
 
                   <p class="pl-12">);</p>
 
                   <p class="pl-6">},</p>
 
-                  <p>};</p>
+                  <p>};<span class="animate-pulse">|</span></p></p>
 
                 </div>
-              </div>
+                <!-- Terminal Input -->
+<div id="terminal-box" class="absolute bottom-0 left-0 w-full border-t border-[#1f2a44] bg-[#0f1430] p-4">
 
+  <p class="text-[10px] text-gray-500 font-mono mb-1">
+    try: show / open / hello
+  </p>
+
+  <div class="flex items-center gap-2">
+    <span class="text-green-400 font-mono">$</span>
+
+    <input
+      id="terminal-input"
+      type="text"
+      placeholder='type "show" and press enter...'
+      class="flex-1 bg-transparent outline-none text-sm text-gray-200 placeholder-gray-500 font-mono"
+    />
+
+    <button
+      id="run-btn"
+      class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-white transition">
+      Run
+    </button>
+  </div>
+
+</div>
+              </div>
+              
               <div
-                class="absolute inset-0 w-full h-[500px] bg-white border border-gray-100 rounded-2xl overflow-hidden p-3 backface-hidden shadow-2xl"
+                class="absolute inset-0 w-full h-full bg-white border border-gray-100 rounded-2xl overflow-hidden p-3 backface-hidden shadow-2xl"
                 style="transform: rotateY(180deg);">
                 <div class="w-full h-full rounded-xl overflow-hidden relative">
                   <img src="./assets/img/About.jpg" alt="Portrait" class="w-full h-full object-cover rounded-xl" />
@@ -316,13 +343,189 @@
                   </div>
                 </div>
               </div>
+              
 
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </section>
+  <!-- Skills -->
+  <section id="skills" class="py-20 bg-[#f8fafc] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <h3 class="text-4xl md:text-5xl font-black tracking-tight 
+           bg-gradient-to-r from-blue-600 to-cyan-400 
+           bg-clip-text text-transparent">Technical Skills</h3>
+        </div>
+
+        <div
+          class="flex flex-wrap items-center gap-2 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/50">
+
+          <button
+            class="filter-btn active px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-gradient-to-r from-blue-600 to-cyan-400 text-white shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]"
+            data-filter="all">
+            All
+          </button>
+
+          <button
+            class="filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-blue-600 hover:bg-blue-50/50"
+            data-filter="frontend">
+            Frontend
+          </button>
+
+          <button
+            class="filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-blue-600 hover:bg-blue-50/50"
+            data-filter="backend">
+            Backend
+          </button>
+
+          <button
+            class="filter-btn px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-blue-600 hover:bg-blue-50/50"
+            data-filter="tools">
+            Tools
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8" id="skills-container">
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="backend">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:rotate-12 transition-transform">
+
+              <img src="./assets/icons/mongodb-icon.svg" alt="MongoDB Icon" style="width: 50px; height: 50px;">
+
+            </div>
+
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">MongoDB</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="85%"></div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="backend">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-100 flex items-center justify-center text-slate-800 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/express-js-icon.svg" alt="Express js Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">Express.js</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="88%"></div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="frontend">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-500 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/react-js-icon.svg" alt="React Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">React</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400  h-full rounded-full w-0 transition-all duration-1000"
+              data-target="95%"></div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="backend">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-green-50 flex items-center justify-center text-green-600 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/node-js-icon.svg" alt="Node JS Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">Node.js</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="82%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="frontend">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-sky-50 flex items-center justify-center text-sky-500 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/tailwind-css-icon.svg" alt="Tailwind Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">Tailwind</h4>
+          </div>
+
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="98%"></div>
+          </div>
+        </div>
+
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="tools">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/visual-studio-code-icon.svg" alt="VS Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">VS Code</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="92%"></div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card group bg-white border border-slate-200/50 rounded-2xl md:rounded-[2rem] p-4 md:p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-2"
+          data-category="tools">
+          <div class="flex flex-col items-center md:items-start gap-3 md:gap-5 mb-4 md:mb-8">
+            <div
+              class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-orange-50 flex items-center justify-center text-orange-500 group-hover:rotate-12 transition-transform">
+              <img src="./assets/icons/postman-icon.svg" alt="Postman Icon" style="width: 50px; height: 50px;">
+            </div>
+            <h4 class="text-sm md:text-xl font-bold text-slate-800">Postman</h4>
+          </div>
+          <div class="relative w-full bg-slate-100 rounded-full h-1.5 md:h-2">
+            <div
+              class="progress-bar absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full w-0 transition-all duration-1000"
+              data-target="80%"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <script src="./script.js"></script>
+</body>
+</html>
+  
   <script src="./script.js"></script>
 </body>
 

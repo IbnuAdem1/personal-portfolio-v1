@@ -100,3 +100,132 @@ function typeEffect() {
 // Start typing after 1 second
 setTimeout(typeEffect, 1000);
 
+
+const inner = document.getElementById("card-inner");
+const input = document.getElementById("terminal-input");
+const button = document.getElementById("run-btn");
+
+const validCommands = ["show", "open", "hello"];
+
+function flipCard() {
+  inner.classList.add("flipped");
+}
+
+function handleCommand() {
+  const value = input.value.trim().toLowerCase();
+
+  if (validCommands.includes(value)) {
+    input.value = "";
+    input.placeholder = "running command...";
+
+    setTimeout(() => {
+      flipCard();
+    }, 400);
+
+  } else {
+    input.value = "";
+    input.placeholder = "command not found...";
+  }
+}
+
+// Button click
+button.addEventListener("click", handleCommand);
+
+// Enter key
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    handleCommand();
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.skill-card');
+  const bars = document.querySelectorAll('.progress-bar');
+
+  // animate visible progress bars
+  const runAnimations = () => {
+    bars.forEach(bar => {
+      const card = bar.closest('.skill-card');
+
+      if (card.style.display !== 'none') {
+        const targetWidth = bar.getAttribute('data-target');
+
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+
+        setTimeout(() => {
+          bar.style.transition = 'width 1.5s cubic-bezier(0.22, 1, 0.36, 1)';
+          bar.style.width = targetWidth;
+        }, 50);
+      }
+    });
+  };
+
+  // trigger once when #skills enters view
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      runAnimations();
+      observer.disconnect();
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(document.querySelector('#skills'));
+
+  // filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+      // reset buttons
+      filterBtns.forEach(b => {
+        b.classList.remove(
+          'bg-gradient-to-r',
+          'from-blue-600',
+          'to-cyan-400',
+          'text-white',
+          'shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]'
+        );
+        b.classList.add('text-slate-500');
+        b.classList.remove('active');
+      });
+
+      // activate current button
+      btn.classList.add(
+        'bg-gradient-to-r',
+        'from-blue-600',
+        'to-cyan-400',
+        'text-white',
+        'shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]'
+      );
+      btn.classList.remove('text-slate-500');
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-filter');
+
+      // filter cards
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'block';
+
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(10px)';
+
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
+        }
+      });
+
+      runAnimations();
+    });
+  });
+});
