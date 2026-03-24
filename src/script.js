@@ -307,3 +307,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observerOptions = {
+    threshold: 0.15 // Trigger when 15% of the element is visible
+  };
+
+  const revealCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add the 'active' class when it enters view
+        entry.target.classList.add('reveal-active');
+        // Stop observing once it's revealed (optional)
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(revealCallback, observerOptions);
+
+  // Target all elements you want to animate
+  const targets = document.querySelectorAll('.reveal');
+  targets.forEach(target => observer.observe(target));
+});
+

@@ -42,6 +42,27 @@
 .flipped {
   transform: rotateY(180deg) !important;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* Initial hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* State when triggered by JS */
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: Add a slight delay for children to create a staggered effect */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+
+
 
 
 
