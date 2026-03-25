@@ -1,3 +1,20 @@
+// ── Theme Initialization (runs immediately to prevent flash) ──
+(function () {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+})();
+
+// ── Theme Toggle Logic ──
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // Main elements
@@ -6,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.getElementById("menu-icon");
   const mobileLinks = document.querySelectorAll(".mobile-link");
   const navbar = document.getElementById("navbar");
+
+  // Theme toggles
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
 
 
   // Toggle mobile menu
@@ -44,21 +67,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // Add shadow + border on scroll
+  // Add shadow + border on scroll (with dark mode support)
   window.addEventListener("scroll", () => {
+    const isDark = document.documentElement.classList.contains('dark');
 
     if (window.scrollY > 10) {
-
-      navbar.classList.add("border-gray-200", "shadow-sm");
       navbar.classList.remove("border-transparent");
-
+      if (isDark) {
+        navbar.classList.add("border-slate-800", "shadow-sm");
+        navbar.classList.remove("border-gray-200");
+      } else {
+        navbar.classList.add("border-gray-200", "shadow-sm");
+        navbar.classList.remove("border-slate-800");
+      }
     } else {
-
       navbar.classList.add("border-transparent");
-      navbar.classList.remove("border-gray-200", "shadow-sm");
-
+      navbar.classList.remove("border-gray-200", "border-slate-800", "shadow-sm");
     }
-
   });
 
 });
@@ -71,7 +96,7 @@ const typeTarget = document.getElementById('typewriter');
 
 function typeEffect() {
   const currentRole = roles[roleIndex];
-  
+
   // Add or remove letters
   if (isDeleting) {
     typeTarget.textContent = currentRole.substring(0, charIndex - 1);
@@ -151,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = section.querySelectorAll('.filter-btn');
     const cards = section.querySelectorAll(cardClass);
 
-    const runExtra = options.onFilter || (() => {});
+    const runExtra = options.onFilter || (() => { });
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -162,7 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
             'bg-gradient-to-r',
             'from-blue-600',
             'to-cyan-400',
-            'text-white'
+            'text-white',
+            'shadow-[0_10px_20px_-5px_rgba(37,99,235,0.3)]',
+            'shadow-md',
+            'shadow-blue-500/20'
           );
           b.classList.add('text-slate-500');
         });
@@ -208,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //  SKILLS SETUP
-  
+
 
   const skillsSection = document.querySelector('#skills');
   const bars = skillsSection.querySelectorAll('.progress-bar');
@@ -245,6 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupFilter('#skills', '.skill-card', {
     onFilter: runSkillAnimations
+
   });
 
   setupFilter('#projects', '.project-card');
@@ -252,31 +281,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  const form = document.getElementById('contact-form');
-  const container = document.getElementById('form-container');
+const form = document.getElementById('contact-form');
+const container = document.getElementById('form-container');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Change button text to "Sending..."
-    const btn = form.querySelector('button');
-    const btnText = btn.querySelector('span');
-    btnText.innerHTML = 'Negotiating...';
-    btn.style.opacity = '0.7';
-    btn.style.pointerEvents = 'none';
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+  // Change button text to "Sending..."
+  const btn = form.querySelector('button');
+  const btnText = btn.querySelector('span');
+  btnText.innerHTML = 'Negotiating...';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
 
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: json
-    })
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
     .then(async (response) => {
       if (response.status == 200) {
         // Success Animation
@@ -287,11 +316,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="w-24 h-24 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-full flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(37,99,235,0.3)]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </div>
-              <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4">Message Received</h2>
-              <p class="text-slate-500 font-medium max-w-xs leading-relaxed">
+              <h2 class="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Message Received</h2>
+              <p class="text-slate-500 dark:text-slate-400 font-medium max-w-xs leading-relaxed">
                 Your vision has been transmitted. I'll review the details and get back to you shortly.
               </p>
-              <button onclick="window.location.reload()" class="mt-10 text-xs font-bold uppercase tracking-widest text-blue-600 hover:text-blue-800 transition-colors">
+              <button onclick="window.location.reload()" class="mt-10 text-xs font-bold uppercase tracking-widest text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">
                 ← Send another
               </button>
             </div>
@@ -304,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(error);
       btnText.innerHTML = "Something went wrong";
     });
-  });
+});
 
 
 

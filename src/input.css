@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+/* Class-based dark mode */
+@variant dark (&:where(.dark, .dark *));
 @theme {
   --font-sans: 'Outfit', sans-serif;
   --animate-marquee: marquee 35s linear infinite;
@@ -52,13 +53,11 @@ html {
   transition: all 0.8s ease-out;
 }
 
-/* State when triggered by JS */
 .reveal-active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Optional: Add a slight delay for children to create a staggered effect */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 
