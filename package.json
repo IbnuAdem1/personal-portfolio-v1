@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css && cp src/index.html dist/ && cp src/script.js dist/ && cp -r src/assets dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
